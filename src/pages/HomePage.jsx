@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PhoneCard from '../components/PhoneCard';
 import { getTopPhones, categories, searchPhones, getPhonesByCategory } from '../data/phones';
@@ -11,7 +11,14 @@ export default function HomePage() {
     const navigate = useNavigate();
     const searchRef = useRef(null);
     const topPhones = getTopPhones(6);
-    const budgetPicks = getPhonesByCategory('budget', 4);
+    const budgetPicks = getPhonesByCategory('budget', 6);
+
+    // Combine and deduplicate phones, limit to 12
+    const allPhones = useMemo(() => {
+        const combined = [...topPhones, ...budgetPicks];
+        const unique = combined.filter((v, i, a) => a.findIndex(x => x.id === v.id) === i);
+        return unique.slice(0, 12);
+    }, [topPhones, budgetPicks]);
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -123,22 +130,15 @@ export default function HomePage() {
             <section className="section">
                 <div className="container">
                     <h2 className="section-title">Rekomendasi Terbaik</h2>
-                    <div className="grid grid-3 stagger-children">
-                        {topPhones.map(phone => (
+                    <div className="grid grid-4 stagger-children">
+                        {allPhones.map(phone => (
                             <PhoneCard key={phone.id} phone={phone} />
                         ))}
                     </div>
-                </div>
-            </section>
-
-            {/* Budget Picks */}
-            <section className="section section-budget">
-                <div className="container">
-                    <h2 className="section-title">Pilihan Budget Terbaik</h2>
-                    <div className="grid grid-4 stagger-children">
-                        {budgetPicks.map(phone => (
-                            <PhoneCard key={phone.id} phone={phone} />
-                        ))}
+                    <div className="home-cta-center">
+                        <Link to="/search" className="btn btn-outline">
+                            Lihat Selengkapnya →
+                        </Link>
                     </div>
                 </div>
             </section>

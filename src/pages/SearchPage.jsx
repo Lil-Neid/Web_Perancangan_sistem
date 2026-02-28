@@ -52,6 +52,10 @@ export default function SearchPage() {
         setPage(1);
     }, [query, categoryParam, brandParam, sortParam, priceParam]);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [page]);
+
     const updateParam = (key, value) => {
         const params = new URLSearchParams(searchParams);
         if (value) {

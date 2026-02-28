@@ -166,6 +166,17 @@
     background: var(--bg-hover);
 }
 
+.home-cta-center {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--s-2xl);
+}
+
+.home-cta-center .btn {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+}
+
 .hero-tags {
     display: flex;
     align-items: center;
@@ -300,6 +311,8 @@
 /* ===== CTA Compare ===== */
 .cta-compare {
     display: flex;
+    max-width: 900px;
+    margin: 0 auto;
     align-items: center;
     justify-content: center;
     background: var(--bg-surface);
@@ -312,7 +325,7 @@
 }
 
 .cta-content {
-    max-width: 600px;
+    max-width: 500px;
 }
 
 .cta-title {
@@ -359,7 +372,7 @@
     }
 
     .cta-compare {
-        padding: var(--s-2xl) var(--s-lg);
+        padding: var(--s-2xl) var(--s-xl);
     }
 
     .section-header {

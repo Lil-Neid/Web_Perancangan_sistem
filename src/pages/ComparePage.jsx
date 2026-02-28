@@ -28,6 +28,9 @@ export default function ComparePage() {
             p.brand.toLowerCase().includes(searchQuery.toLowerCase()))
     );
 
+    // Show only filled slots + 1 empty slot (max 3)
+    const visibleSlots = Math.min(selected.length + 1, MAX_COMPARE);
+
     const specRows = [
         { label: 'Harga', key: 'price', format: (v) => formatPrice(v) },
         { label: 'Rating', key: 'rating', format: (v) => `⭐ ${v} / 5.0` },
@@ -60,14 +63,17 @@ export default function ComparePage() {
         <div className="compare-page">
             <div className="container">
                 <div className="compare-header animate-fade-in-up">
-                    <h1 className="compare-title">⚖️ Bandingkan Smartphone</h1>
+                    <h1 className="compare-title">Bandingkan Smartphone</h1>
                     <p className="compare-subtitle">Pilih hingga {MAX_COMPARE} smartphone untuk dibandingkan secara berdampingan</p>
                 </div>
 
                 {/* Phone Selection */}
                 <div className="compare-selectors animate-fade-in-up">
-                    {Array.from({ length: MAX_COMPARE }).map((_, idx) => (
-                        <div key={idx} className="compare-slot">
+                    {Array.from({ length: visibleSlots }).map((_, idx) => (
+                        <div 
+                            key={idx} 
+                            className={`compare-slot ${selected[idx] ? 'filled' : 'new'}`}
+                        >
                             {selected[idx] ? (
                                 <div className="compare-selected-card">
                                     <button className="compare-remove" onClick={() => removePhone(selected[idx].id)}>✕</button>
