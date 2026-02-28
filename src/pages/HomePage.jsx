@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PhoneCard from '../components/PhoneCard';
 import { getTopPhones, categories, searchPhones, getPhonesByCategory } from '../data/phones';
@@ -6,15 +6,48 @@ import './HomePage.css';
 
 export default function HomePage() {
     const [heroQuery, setHeroQuery] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
     const navigate = useNavigate();
+    const searchRef = useRef(null);
     const topPhones = getTopPhones(6);
     const budgetPicks = getPhonesByCategory('budget', 4);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (searchRef.current && !searchRef.current.contains(e.target)) {
+                setShowSuggestions(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     const handleHeroSearch = (e) => {
         e.preventDefault();
         if (heroQuery.trim()) {
             navigate(`/search?q=${encodeURIComponent(heroQuery.trim())}`);
+            setShowSuggestions(false);
         }
+    };
+
+    const handleInputChange = (e) => {
+        const val = e.target.value;
+        setHeroQuery(val);
+        if (val.trim().length > 0) {
+            const filtered = searchPhones(val).slice(0, 5);
+            setSuggestions(filtered);
+            setShowSuggestions(true);
+        } else {
+            setSuggestions([]);
+            setShowSuggestions(false);
+        }
+    };
+
+    const handleSuggestionClick = (phone) => {
+        setHeroQuery('');
+        setShowSuggestions(false);
+        navigate(`/phone/${phone.id}`);
     };
 
     return (
@@ -25,19 +58,53 @@ export default function HomePage() {
                     <h1 className="hero-title animate-fade-in-up">
                         Temukan smartphone terbaik untuk kebutuhanmu
                     </h1>
-                    <form className="hero-search-wrap animate-fade-in-up" onSubmit={handleHeroSearch}>
+                    <form className="hero-search-wrap animate-fade-in-up" onSubmit={handleHeroSearch} ref={searchRef}>
                         <span className="hero-search-icon">🔍</span>
                         <input
                             type="text"
                             className="hero-search-input"
                             placeholder="Cari smartphone... contoh: Samsung Galaxy S24"
                             value={heroQuery}
-                            onChange={(e) => setHeroQuery(e.target.value)}
+                            onChange={handleInputChange}
+                            onFocus={() => heroQuery.trim() && setShowSuggestions(true)}
                             id="hero-search-input"
                         />
+                        {heroQuery && (
+                            <button
+                                type="button"
+                                className="hero-search-clear"
+                                onClick={() => { setHeroQuery(''); setSuggestions([]); setShowSuggestions(false); }}
+                            >
+                                ✕
+                            </button>
+                        )}
                         <button type="submit" className="btn btn-primary hero-search-btn">
                             Cari
                         </button>
+
+                        {showSuggestions && suggestions.length > 0 && (
+                            <div className="search-suggestions">
+                                {suggestions.map(phone => (
+                                    <div
+                                        key={phone.id}
+                                        className="suggestion-item"
+                                        onClick={() => handleSuggestionClick(phone)}
+                                    >
+                                        <img src={phone.image} alt={phone.name} className="suggestion-img" loading="lazy" />
+                                        <div className="suggestion-info">
+                                            <span className="suggestion-name">{phone.name}</span>
+                                            <span className="suggestion-brand">{phone.brand}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                                <div
+                                    className="suggestion-all"
+                                    onClick={handleHeroSearch}
+                                >
+                                    Lihat semua hasil untuk "{heroQuery}" →
+                                </div>
+                            </div>
+                        )}
                     </form>
                     <div className="hero-tags animate-fade-in-up">
                         <span className="hero-tag-label">Populer:</span>
