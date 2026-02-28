@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import phones, { formatPrice } from '../data/phones';
 import './ComparePage.css';
@@ -9,6 +9,17 @@ export default function ComparePage() {
     const [selected, setSelected] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [showDropdown, setShowDropdown] = useState(null);
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+                setShowDropdown(null);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     const addPhone = (phone) => {
         if (selected.length < MAX_COMPARE && !selected.find(s => s.id === phone.id)) {
@@ -70,8 +81,8 @@ export default function ComparePage() {
                 {/* Phone Selection */}
                 <div className="compare-selectors animate-fade-in-up">
                     {Array.from({ length: visibleSlots }).map((_, idx) => (
-                        <div 
-                            key={idx} 
+                        <div
+                            key={idx}
                             className={`compare-slot ${selected[idx] ? 'filled' : 'new'}`}
                         >
                             {selected[idx] ? (
@@ -84,7 +95,7 @@ export default function ComparePage() {
                                 </div>
                             ) : (
                                 <div className="compare-empty-slot">
-                                    <div className="compare-add-wrap">
+                                    <div className="compare-add-wrap" ref={dropdownRef}>
                                         <button
                                             className="compare-add-btn"
                                             onClick={() => setShowDropdown(showDropdown === idx ? null : idx)}
@@ -132,7 +143,7 @@ export default function ComparePage() {
                 {/* Comparison Table */}
                 {selected.length >= 2 && (
                     <div className="compare-table-wrap animate-fade-in-up">
-                        <h2 className="section-title">📊 Perbandingan Spesifikasi</h2>
+                        <h2 className="section-title">Perbandingan Spesifikasi</h2>
                         <div className="compare-table" style={{ '--compare-count': selected.length }}>
                             <div className="compare-table-header">
                                 <div className="compare-table-label">Spesifikasi</div>
@@ -163,9 +174,8 @@ export default function ComparePage() {
                     </div>
                 )}
 
-                {selected.length < 2 && (
+                {selected.length < 2 && showDropdown === null && (
                     <div className="compare-onboarding animate-fade-in-up">
-                        <div className="compare-onboarding-icon">⚖️</div>
                         <h3>Pilih minimal 2 HP untuk mulai membandingkan</h3>
                         <p>Klik tombol "+" di atas untuk menambahkan smartphone yang ingin kamu bandingkan</p>
                         <Link to="/search" className="btn btn-primary">Jelajahi Smartphone →</Link>
