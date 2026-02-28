@@ -106,14 +106,16 @@ export default function HomePage() {
                             </div>
                         )}
                     </form>
-                    <div className="hero-tags animate-fade-in-up">
-                        <span className="hero-tag-label">Populer:</span>
-                        {['Samsung Galaxy S24', 'iPhone 15', 'Xiaomi 14', 'POCO F6'].map(tag => (
-                            <Link key={tag} to={`/search?q=${encodeURIComponent(tag)}`} className="hero-tag">
-                                {tag}
-                            </Link>
-                        ))}
-                    </div>
+                    {!showSuggestions && !heroQuery && (
+                        <div className="hero-tags animate-fade-in-up">
+                            <span className="hero-tag-label">Populer:</span>
+                            {['Samsung Galaxy S24', 'iPhone 15', 'Xiaomi 14', 'POCO F6'].map(tag => (
+                                <Link key={tag} to={`/search?q=${encodeURIComponent(tag)}`} className="hero-tag">
+                                    {tag}
+                                </Link>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
