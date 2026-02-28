@@ -2,7 +2,10 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import PhoneCard from '../components/PhoneCard';
 import phones, { searchPhones, filterPhones, sortPhones, brands, categories, formatPrice } from '../data/phones';
+import filterIcon from '../assets/icons/filter.json';
 import './SearchPage.css';
+
+const FILTER_ICON = { ...filterIcon };
 
 const PHONES_PER_PAGE = 12;
 const priceRanges = [
@@ -87,7 +90,7 @@ export default function SearchPage() {
                             className={`btn btn-outline filter-toggle ${filtersOpen ? 'active' : ''}`}
                             onClick={() => setFiltersOpen(!filtersOpen)}
                         >
-                            🎛️ Filter {activeFilterCount > 0 && <span className="filter-badge">{activeFilterCount}</span>}
+                            <lord-icon trigger="hover" icon={FILTER_ICON} size="20px" color="#000000"></lord-icon> Filter {activeFilterCount > 0 && <span className="filter-badge">{activeFilterCount}</span>}
                         </button>
                     </div>
 
