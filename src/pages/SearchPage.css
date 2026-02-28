@@ -136,6 +136,15 @@
 .filter-title {
     font-size: 1.15rem;
     color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
 }
 
 .filter-clear {
@@ -150,6 +159,25 @@
 
 .filter-clear:hover {
     color: var(--accent);
+}
+
+.filter-close {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--r-md);
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: all var(--t-fast);
+}
+
+.filter-close:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
 }
 
 .filter-group {
@@ -306,6 +334,10 @@
 
     .filter-sidebar.open {
         display: block;
+    }
+
+    .filter-close {
+        display: flex;
     }
 
     .search-header-top {

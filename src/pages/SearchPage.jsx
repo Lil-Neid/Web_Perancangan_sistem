@@ -121,10 +121,13 @@ export default function SearchPage() {
                     {/* Filter Sidebar */}
                     <aside className={`filter-sidebar ${filtersOpen ? 'open' : ''}`}>
                         <div className="filter-header">
-                            <h3 className="filter-title">🎛️ Filter</h3>
-                            {activeFilterCount > 0 && (
-                                <button className="filter-clear" onClick={clearFilters}>Reset</button>
-                            )}
+                            <h3 className="filter-title"><lord-icon trigger="hover" icon={FILTER_ICON} size="24px" color="#000000"></lord-icon> Filter</h3>
+                            <div className="filter-header-actions">
+                                {activeFilterCount > 0 && (
+                                    <button className="filter-clear" onClick={clearFilters}>Reset</button>
+                                )}
+                                <button className="filter-close" onClick={() => setFiltersOpen(false)}>✕</button>
+                            </div>
                         </div>
 
                         {/* Category Filter */}
