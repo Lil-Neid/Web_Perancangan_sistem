@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
+    "@lordicon/element": "^2.0.2",
+    "@lordicon/react": "^1.11.0",
+    "lottie-web": "^5.13.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1"
