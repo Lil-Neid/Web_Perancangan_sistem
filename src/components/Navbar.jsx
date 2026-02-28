@@ -2,9 +2,13 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import phones from '../data/phones';
 import homeIcon from '../assets/icons/home.json';
+import searchIcon from '../assets/icons/search.json';
+import aboutIcon from '../assets/icons/about.json';
 import './Navbar.css';
 
 const HOME_ICON = { ...homeIcon };
+const SEARCH_ICON = { ...searchIcon };
+const ABOUT_ICON = { ...aboutIcon };
 
 export default function Navbar() {
     const [query, setQuery] = useState('');
@@ -62,14 +66,14 @@ export default function Navbar() {
     };
 
     const navLinks = [
-        {
-            to: '/',
-            label: 'Beranda',
+        { 
+            to: '/', 
+            label: 'Beranda', 
             icon: <lord-icon trigger="hover" icon={HOME_ICON} size="24px" color="#000000"></lord-icon>
         },
-        { to: '/search', label: 'Cari HP', icon: '🔍' },
+        { to: '/search', label: 'Cari HP', icon: <lord-icon trigger="hover" icon={SEARCH_ICON} size="24px" color="#000000"></lord-icon> },
         { to: '/compare', label: 'Bandingkan', icon: '⚖️' },
-        { to: '/about', label: 'Tentang', icon: 'ℹ️' },
+        { to: '/about', label: 'Tentang', icon: <lord-icon trigger="hover" icon={ABOUT_ICON} size="24px" color="#000000"></lord-icon> },
     ];
 
     return (
