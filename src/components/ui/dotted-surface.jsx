@@ -28,6 +28,8 @@ export function DottedSurface({
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const container = containerRef.current;
+
     // Parse color to RGB values (0-255 range)
     const colorObj = new THREE.Color(color);
     const r = Math.round(colorObj.r * 255);
@@ -38,9 +40,12 @@ export function DottedSurface({
     const scene = new THREE.Scene();
     scene.fog = new THREE.Fog(0xffffff, 2000, 10000);
 
+    // Get container dimensions
+    const { width, height } = container.getBoundingClientRect();
+
     const camera = new THREE.PerspectiveCamera(
       60,
-      window.innerWidth / window.innerHeight,
+      width / height,
       1,
       10000
     );
@@ -51,10 +56,10 @@ export function DottedSurface({
       antialias: true,
     });
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth, window.innerHeigh);
     renderer.setClearColor(scene.fog.color, 0);
 
-    containerRef.current.appendChild(renderer.domElement);
+    container.appendChild(renderer.domElement);
 
     // Create particles
     const particles = [];
@@ -126,11 +131,22 @@ export function DottedSurface({
       count += 0.1;
     };
 
-    // Handle window resize
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+    // Handle container resize with ResizeObserver
+    const resizeObserver = new ResizeObserver(() => {
+      const { width: newWidth, height: newHeight } = container.getBoundingClientRect();
+      camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(newWidth, newHeight);
+    });
+
+    resizeObserver.observe(container);
+
+    // Also handle window resize
+    const handleResize = () => {
+      const { width: newWidth, height: newHeight } = container.getBoundingClientRect();
+      camera.aspect = newWidth / newHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(newWidth, newHeight);
     };
 
     window.addEventListener('resize', handleResize);
@@ -150,6 +166,7 @@ export function DottedSurface({
 
     // Cleanup function
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener('resize', handleResize);
 
       if (sceneRef.current) {
@@ -181,9 +198,12 @@ export function DottedSurface({
       ref={containerRef}
       className={className || ''}
       style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: -1,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 0,
         pointerEvents: 'none',
         ...props.style,
       }}

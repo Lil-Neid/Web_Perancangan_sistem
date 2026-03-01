@@ -83,14 +83,15 @@ export default function HomePage() {
         <div className="home-page">
             {/* Hero Section */}
             <section className="hero">
-                <DottedSurface
-                    color="#000000"
-                    opacity={0.6}
-                    separation={120}
-                    amountX={30}
-                    amountY={40}
-                    style={{ top: 0, height: '100vh' }}
-                />
+                <div className="hero-background">
+                    <DottedSurface
+                        color="#000000"
+                        opacity={0.6}
+                        separation={120}
+                        amountX={30}
+                        amountY={40}
+                    />
+                </div>
                 <div className="container hero-content">
                     <h1 className="hero-title animate-fade-in-up">
                         Temukan smartphone terbaik untuk kebutuhanmu
