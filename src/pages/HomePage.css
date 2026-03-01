@@ -2,7 +2,7 @@
 .hero {
     position: relative;
     padding: 8rem 0 5rem;
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     background: var(--bg-body);
@@ -380,4 +380,16 @@
         align-items: flex-start;
         gap: var(--s-sm);
     }
+}
+
+/* ===== Scroll Reveal Animation ===== */
+.section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
