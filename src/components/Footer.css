@@ -57,11 +57,18 @@
     transition: all var(--t-fast);
     display: inline-flex;
     align-items: center;
+    gap: var(--s-sm);
 }
 
 .footer-link:hover {
     color: var(--accent);
     transform: translateX(4px);
+}
+
+.marketplace-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 .footer-bottom {

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Footer.css';
+import tokopediaIcon from '../assets/icons/tokopedia_icon.svg';
+import shopeeIcon from '../assets/icons/shopee_icon.svg';
 
 export default function Footer() {
     return (
@@ -12,7 +14,7 @@ export default function Footer() {
                             <span className="brand-text">ReviewHP</span>
                         </div>
                         <p className="footer-desc">
-                            Platform review smartphone terlengkap di Indonesia. Temukan HP terbaik
+                            Platform review smartphone di Indonesia. Temukan HP terbaik
                             dengan spesifikasi detail dan link langsung ke marketplace.
                         </p>
                     </div>
@@ -36,10 +38,12 @@ export default function Footer() {
                     <div className="footer-links-group">
                         <h4 className="footer-title">Marketplace</h4>
                         <a href="https://www.tokopedia.com" target="_blank" rel="noopener noreferrer" className="footer-link">
-                            🟢 Tokopedia
+                            <img src={tokopediaIcon} alt="Tokopedia" className="marketplace-icon" />
+                            Tokopedia
                         </a>
                         <a href="https://shopee.co.id" target="_blank" rel="noopener noreferrer" className="footer-link">
-                            🟠 Shopee
+                            <img src={shopeeIcon} alt="Shopee" className="marketplace-icon" />
+                            Shopee
                         </a>
                     </div>
                 </div>
