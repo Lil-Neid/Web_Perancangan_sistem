@@ -43,14 +43,40 @@ export default function ComparePage() {
     // Show only filled slots + 1 empty slot (max 3)
     const visibleSlots = Math.min(selected.length + 1, MAX_COMPARE);
 
+    // Parse display info into separate fields
+    const parseDisplay = (displayStr) => {
+        const result = { type: '', size: '', resolution: '', refreshRate: '' };
+        
+        // Extract size (e.g., 6.78")
+        const sizeMatch = displayStr.match(/(\d+\.?\d*)"/);
+        if (sizeMatch) result.size = `${sizeMatch[1]}"`;
+        
+        // Extract type (e.g., AMOLED, IPS, OLED, etc.)
+        const typeMatch = displayStr.match(/(AMOLED|OLED|IPS|LCD|Dynamic AMOLED|LTPO AMOLED|Super AMOLED)/i);
+        if (typeMatch) result.type = typeMatch[1];
+        
+        // Extract refresh rate (e.g., 120Hz)
+        const refreshMatch = displayStr.match(/(\d+Hz)/);
+        if (refreshMatch) result.refreshRate = refreshMatch[1];
+        
+        // Extract resolution (e.g., 1080 x 2436 pixels)
+        const resMatch = displayStr.match(/(\d+\s*x\s*\d+\s*pixels?)/i);
+        if (resMatch) result.resolution = resMatch[1];
+        
+        return result;
+    };
+
     const specRows = [
         { label: 'Harga', key: 'price', format: (v) => formatPrice(v) },
-        { label: 'Rating', key: 'rating', format: (v) => `⭐ ${v} / 5.0` },
+        { label: 'Rating', key: 'rating', format: (v) => `${v} / 5.0` },
         { label: 'Chipset', key: 'chipset' },
         { label: 'CPU', key: 'cpu' },
         { label: 'RAM', key: 'ram' },
         { label: 'Storage', key: 'storage' },
-        { label: 'Layar', key: 'display' },
+        { label: 'Tipe Layar', key: 'display', format: (v) => parseDisplay(v).type },
+        { label: 'Ukuran Layar', key: 'display', format: (v) => parseDisplay(v).size },
+        { label: 'Refresh Rate', key: 'display', format: (v) => parseDisplay(v).refreshRate },
+        { label: 'Resolusi', key: 'display', format: (v) => parseDisplay(v).resolution },
         { label: 'Kamera Belakang', key: 'cameraMain' },
         { label: 'Kamera Depan', key: 'cameraFront' },
         { label: 'Baterai', key: 'battery' },

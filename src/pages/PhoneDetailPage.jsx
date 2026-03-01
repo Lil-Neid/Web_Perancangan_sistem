@@ -12,7 +12,7 @@ export default function PhoneDetailPage() {
             <div className="detail-page">
                 <div className="container">
                     <div className="detail-not-found">
-                        <div className="not-found-icon">📱❌</div>
+                        <div className="not-found-icon">❌</div>
                         <h2>Smartphone Tidak Ditemukan</h2>
                         <p>Smartphone yang kamu cari tidak tersedia.</p>
                         <Link to="/search" className="btn btn-primary">Cari HP Lain</Link>
@@ -24,15 +24,43 @@ export default function PhoneDetailPage() {
 
     const relatedPhones = getRelatedPhones(phone, 4);
 
+    // Parse display info into separate fields
+    const parseDisplay = (displayStr) => {
+        const result = { type: '', size: '', resolution: '', refreshRate: '' };
+        
+        // Extract size (e.g., 6.78")
+        const sizeMatch = displayStr.match(/(\d+\.?\d*)"/);
+        if (sizeMatch) result.size = `${sizeMatch[1]}"`;
+        
+        // Extract type (e.g., AMOLED, IPS, OLED, etc.)
+        const typeMatch = displayStr.match(/(AMOLED|OLED|IPS|LCD|Dynamic AMOLED|LTPO AMOLED|Super AMOLED)/i);
+        if (typeMatch) result.type = typeMatch[1];
+        
+        // Extract refresh rate (e.g., 120Hz)
+        const refreshMatch = displayStr.match(/(\d+Hz)/);
+        if (refreshMatch) result.refreshRate = refreshMatch[1];
+        
+        // Extract resolution (e.g., 1080 x 2436 pixels)
+        const resMatch = displayStr.match(/(\d+\s*x\s*\d+\s*pixels?)/i);
+        if (resMatch) result.resolution = resMatch[1];
+        
+        return result;
+    };
+
+    const displayInfo = parseDisplay(phone.display);
+
     const specGroups = [
         {
-            title: '📱 Layar',
+            title: 'Layar',
             specs: [
-                { label: 'Display', value: phone.display },
+                { label: 'Tipe', value: displayInfo.type },
+                { label: 'Ukuran', value: displayInfo.size },
+                { label: 'Refresh Rate', value: displayInfo.refreshRate },
+                { label: 'Resolusi', value: displayInfo.resolution },
             ]
         },
         {
-            title: '⚡ Performa',
+            title: 'Performa',
             specs: [
                 { label: 'Chipset', value: phone.chipset },
                 { label: 'CPU', value: phone.cpu },
@@ -41,14 +69,14 @@ export default function PhoneDetailPage() {
             ]
         },
         {
-            title: '📷 Kamera',
+            title: 'Kamera',
             specs: [
                 { label: 'Kamera Belakang', value: phone.cameraMain },
                 { label: 'Kamera Depan', value: phone.cameraFront },
             ]
         },
         {
-            title: '🔋 Baterai & OS',
+            title: 'Baterai & OS',
             specs: [
                 { label: 'Baterai', value: phone.battery },
                 { label: 'Sistem Operasi', value: phone.os },
@@ -80,8 +108,8 @@ export default function PhoneDetailPage() {
                         <h1 className="detail-name">{phone.name}</h1>
 
                         <div className="detail-meta">
-                            <span className="detail-rating">⭐ {phone.rating} / 5.0</span>
-                            <span className="detail-year">📅 {phone.year}</span>
+                            <span className="detail-rating">{phone.rating} / 5.0</span>
+                            <span className="detail-year">{phone.year}</span>
                             {phone.category.map(cat => (
                                 <Link key={cat} to={`/search?category=${cat}`} className="badge">
                                     {cat}
@@ -93,41 +121,9 @@ export default function PhoneDetailPage() {
 
                         <p className="detail-review-text">{phone.editorReview}</p>
 
-                        {/* Quick Specs */}
-                        <div className="detail-quick-specs">
-                            <div className="quick-spec">
-                                <span className="quick-spec-icon">💾</span>
-                                <div>
-                                    <span className="quick-spec-label">RAM</span>
-                                    <span className="quick-spec-value">{phone.ram}</span>
-                                </div>
-                            </div>
-                            <div className="quick-spec">
-                                <span className="quick-spec-icon">📷</span>
-                                <div>
-                                    <span className="quick-spec-label">Kamera</span>
-                                    <span className="quick-spec-value">{phone.cameraMain.split(' ')[0]} MP</span>
-                                </div>
-                            </div>
-                            <div className="quick-spec">
-                                <span className="quick-spec-icon">🔋</span>
-                                <div>
-                                    <span className="quick-spec-label">Baterai</span>
-                                    <span className="quick-spec-value">{phone.battery.split(',')[0]}</span>
-                                </div>
-                            </div>
-                            <div className="quick-spec">
-                                <span className="quick-spec-icon">⚡</span>
-                                <div>
-                                    <span className="quick-spec-label">Chipset</span>
-                                    <span className="quick-spec-value">{phone.chipset.split(' ').slice(0, 2).join(' ')}</span>
-                                </div>
-                            </div>
-                        </div>
-
                         {/* Marketplace Buttons */}
                         <div className="detail-marketplace">
-                            <h3 className="marketplace-title">🛒 Beli Sekarang</h3>
+                            <h3 className="marketplace-title">Beli Sekarang</h3>
                             <div className="marketplace-btns">
                                 <a
                                     href={getTokopediaLink(phone.name)}
@@ -151,14 +147,14 @@ export default function PhoneDetailPage() {
                         </div>
 
                         <Link to="/compare" className="btn btn-outline detail-compare-btn">
-                            ⚖️ Bandingkan dengan HP Lain
+                            Bandingkan dengan HP Lain
                         </Link>
                     </div>
                 </div>
 
                 {/* Full Specs */}
                 <section className="detail-specs section">
-                    <h2 className="section-title">📊 Spesifikasi Lengkap</h2>
+                    <h2 className="section-title">Spesifikasi Lengkap</h2>
                     <div className="specs-grid">
                         {specGroups.map((group, idx) => (
                             <div key={idx} className="spec-group animate-fade-in-up" style={{ animationDelay: `${idx * 0.1}s` }}>
@@ -179,7 +175,7 @@ export default function PhoneDetailPage() {
                 {/* Related Phones */}
                 {relatedPhones.length > 0 && (
                     <section className="section">
-                        <h2 className="section-title">📱 Smartphone Terkait</h2>
+                        <h2 className="section-title">Smartphone Terkait</h2>
                         <div className="grid grid-4 stagger-children">
                             {relatedPhones.map(p => (
                                 <PhoneCard key={p.id} phone={p} />
