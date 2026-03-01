@@ -332,16 +332,6 @@
     gap: 0.5rem;
 }
 
-.compare-table-value.best {
-    background: var(--accent-dim);
-    color: var(--accent);
-    font-weight: 600;
-}
-
-.best-badge {
-    font-size: 1.1rem;
-}
-
 /* Onboarding */
 .compare-onboarding {
     text-align: center;

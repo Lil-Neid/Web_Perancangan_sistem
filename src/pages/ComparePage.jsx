@@ -58,19 +58,6 @@ export default function ComparePage() {
         { label: 'Tahun', key: 'year' },
     ];
 
-    const getBest = (key) => {
-        if (selected.length < 2) return null;
-        if (key === 'price') {
-            const minPrice = Math.min(...selected.map(s => s[key]));
-            return selected.find(s => s[key] === minPrice)?.id;
-        }
-        if (key === 'rating' || key === 'year') {
-            const max = Math.max(...selected.map(s => s[key]));
-            return selected.find(s => s[key] === max)?.id;
-        }
-        return null;
-    };
-
     return (
         <div className="compare-page">
             <div className="container">
@@ -154,23 +141,19 @@ export default function ComparePage() {
                                     </div>
                                 ))}
                             </div>
-                            {specRows.map(row => {
-                                const bestId = getBest(row.key);
-                                return (
-                                    <div key={row.key} className="compare-table-row">
-                                        <div className="compare-table-label">{row.label}</div>
-                                        {selected.map(phone => (
-                                            <div
-                                                key={phone.id}
-                                                className={`compare-table-value ${phone.id === bestId ? 'best' : ''}`}
-                                            >
-                                                {row.format ? row.format(phone[row.key]) : phone[row.key]}
-                                                {phone.id === bestId && <span className="best-badge">🏆</span>}
-                                            </div>
-                                        ))}
-                                    </div>
-                                );
-                            })}
+                            {specRows.map(row => (
+                                <div key={row.key} className="compare-table-row">
+                                    <div className="compare-table-label">{row.label}</div>
+                                    {selected.map(phone => (
+                                        <div
+                                            key={phone.id}
+                                            className="compare-table-value"
+                                        >
+                                            {row.format ? row.format(phone[row.key]) : phone[row.key]}
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 )}
