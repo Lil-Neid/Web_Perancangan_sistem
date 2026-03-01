@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PhoneCard from '../components/PhoneCard';
 import InteractiveButton from '../components/InteractiveButton';
+import { DottedSurface } from '../components/ui/dotted-surface';
 import { getTopPhones, categories, searchPhones, getPhonesByCategory } from '../data/phones';
 import './HomePage.css';
 
@@ -82,6 +83,14 @@ export default function HomePage() {
         <div className="home-page">
             {/* Hero Section */}
             <section className="hero">
+                <DottedSurface
+                    color="#000000"
+                    opacity={0.6}
+                    separation={120}
+                    amountX={30}
+                    amountY={40}
+                    style={{ top: 0, height: '100vh' }}
+                />
                 <div className="container hero-content">
                     <h1 className="hero-title animate-fade-in-up">
                         Temukan smartphone terbaik untuk kebutuhanmu
