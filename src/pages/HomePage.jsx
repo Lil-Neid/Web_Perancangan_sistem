@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PhoneCard from '../components/PhoneCard';
+import InteractiveButton from '../components/InteractiveButton';
 import { getTopPhones, categories, searchPhones, getPhonesByCategory } from '../data/phones';
 import './HomePage.css';
 
@@ -136,8 +137,8 @@ export default function HomePage() {
                         ))}
                     </div>
                     <div className="home-cta-center">
-                        <Link to="/search" className="btn btn-outline">
-                            Lihat Selengkapnya →
+                        <Link to="/search">
+                            <InteractiveButton text="Lihat Selengkapnya" />
                         </Link>
                     </div>
                 </div>
@@ -150,8 +151,8 @@ export default function HomePage() {
                         <div className="cta-content">
                             <h2 className="cta-title">Bingung Pilih HP?</h2>
                             <p className="cta-desc">Bandingkan hingga 3 smartphone sekaligus untuk menemukan yang paling cocok untukmu</p>
-                            <Link to="/compare" className="btn btn-primary">
-                                Bandingkan Sekarang
+                            <Link to="/compare">
+                                <InteractiveButton text="Bandingkan Sekarang" />
                             </Link>
                         </div>
                     </div>

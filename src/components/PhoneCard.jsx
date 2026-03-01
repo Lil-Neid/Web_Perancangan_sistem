@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { formatPrice } from '../data/phones';
+import InteractiveButton from './InteractiveButton';
 import './PhoneCard.css';
 
 export default function PhoneCard({ phone, onCompare, isInCompare }) {
@@ -42,8 +43,8 @@ export default function PhoneCard({ phone, onCompare, isInCompare }) {
             </Link>
 
             <div className="phone-card-actions">
-                <Link to={`/phone/${phone.id}`} className="btn btn-primary btn-sm">
-                    Detail
+                <Link to={`/phone/${phone.id}`}>
+                    <InteractiveButton text="Detail" />
                 </Link>
                 {onCompare && (
                     <button

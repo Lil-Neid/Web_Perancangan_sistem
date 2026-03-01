@@ -1,0 +1,84 @@
+.interactive-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    width: auto;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--border);
+    border-radius: var(--r-pill);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all var(--t-base) var(--ease-out);
+}
+
+.interactive-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--text-primary);
+    transition: all var(--t-base) var(--ease-out);
+    z-index: 0;
+}
+
+.interactive-btn .btn-text {
+    position: relative;
+    z-index: 2;
+    transition: all var(--t-base) var(--ease-out);
+}
+
+.interactive-btn .btn-text-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translate(-50%, -50%) translateX(40px);
+    opacity: 0;
+    transition: all var(--t-base) var(--ease-out);
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.interactive-btn .btn-bg-fill {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: all var(--t-base) var(--ease-out);
+    z-index: 1;
+}
+
+.interactive-btn:hover {
+    border-color: var(--text-primary);
+    color: #1D1D1F;
+}
+
+.interactive-btn:hover::before {
+    left: 0;
+}
+
+.interactive-btn:hover .btn-text {
+    transform: translateX(40px);
+    opacity: 0;
+}
+
+.interactive-btn:hover .btn-text-hover {
+    transform: translate(-50%, -50%) translateX(0);
+    opacity: 1;
+    color: #fff;
+}

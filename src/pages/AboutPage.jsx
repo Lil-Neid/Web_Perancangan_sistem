@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import InteractiveButton from '../components/InteractiveButton';
 import './AboutPage.css';
 
 export default function AboutPage() {
@@ -80,8 +81,12 @@ export default function AboutPage() {
                 <div className="about-cta animate-fade-in-up">
                     <h3>Siap Menemukan HP Impianmu?</h3>
                     <div className="about-cta-buttons">
-                        <Link to="/search" className="btn btn-primary">🔍 Cari Smartphone</Link>
-                        <Link to="/compare" className="btn btn-outline">⚖️ Bandingkan HP</Link>
+                        <Link to="/search">
+                            <InteractiveButton text="Cari Smartphone" />
+                        </Link>
+                        <Link to="/compare">
+                            <InteractiveButton text="Bandingkan HP" />
+                        </Link>
                     </div>
                 </div>
             </div>

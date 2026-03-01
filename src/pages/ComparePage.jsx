@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import phones, { formatPrice } from '../data/phones';
+import InteractiveButton from '../components/InteractiveButton';
 import './ComparePage.css';
 
 const MAX_COMPARE = 3;
@@ -178,7 +179,9 @@ export default function ComparePage() {
                     <div className="compare-onboarding animate-fade-in-up">
                         <h3>Pilih minimal 2 HP untuk mulai membandingkan</h3>
                         <p>Klik tombol "+" di atas untuk menambahkan smartphone yang ingin kamu bandingkan</p>
-                        <Link to="/search" className="btn btn-primary">Jelajahi Smartphone →</Link>
+                        <Link to="/search">
+                            <InteractiveButton text="Jelajahi Smartphone" />
+                        </Link>
                     </div>
                 )}
             </div>
