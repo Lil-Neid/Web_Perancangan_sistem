@@ -15,11 +15,11 @@ import * as THREE from 'three';
  */
 export function DottedSurface({
   className,
-  separation = 150,
-  amountX = 40,
-  amountY = 60,
+  separation = 130,
+  amountX = 90,
+  amountY = 70,
   color = '#000000',
-  opacity = 0.8,
+  opacity = 0.9,
   ...props
 }) {
   const containerRef = useRef(null);
