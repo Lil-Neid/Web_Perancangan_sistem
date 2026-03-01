@@ -15,9 +15,9 @@ import * as THREE from 'three';
  */
 export function DottedSurface({
   className,
-  separation = 130,
-  amountX = 90,
-  amountY = 70,
+  separation = 150,
+  amountX = 40,
+  amountY = 60,
   color = '#000000',
   opacity = 0.9,
   ...props
