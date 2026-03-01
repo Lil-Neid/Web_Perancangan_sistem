@@ -1,11 +1,11 @@
 import { useParams, Link } from 'react-router-dom';
-import { getPhoneById, getRelatedPhones, formatPrice, getTokopediaLink, getShopeeLink } from '../data/phones';
+import phones, { getRelatedPhones, formatPrice, getTokopediaLink, getShopeeLink } from '../data/phones';
 import PhoneCard from '../components/PhoneCard';
 import './PhoneDetailPage.css';
 
 export default function PhoneDetailPage() {
-    const { id } = useParams();
-    const phone = getPhoneById(id);
+    const { slug } = useParams();
+    const phone = phones.find(p => p.slug === slug);
 
     if (!phone) {
         return (

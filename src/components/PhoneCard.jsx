@@ -6,7 +6,7 @@ import './PhoneCard.css';
 export default function PhoneCard({ phone, onCompare, isInCompare }) {
     return (
         <div className="phone-card">
-            <Link to={`/phone/${phone.id}`} className="phone-card-link">
+            <Link to={`/phone/${phone.slug}`} className="phone-card-link">
                 <div className="phone-card-img-wrap">
                     <img
                         src={phone.image}
@@ -43,7 +43,7 @@ export default function PhoneCard({ phone, onCompare, isInCompare }) {
             </Link>
 
             <div className="phone-card-actions">
-                <Link to={`/phone/${phone.id}`}>
+                <Link to={`/phone/${phone.slug}`}>
                     <InteractiveButton text="Detail" />
                 </Link>
                 {onCompare && (
@@ -51,7 +51,7 @@ export default function PhoneCard({ phone, onCompare, isInCompare }) {
                         className={`btn btn-sm ${isInCompare ? 'btn-compare-active' : 'btn-outline'}`}
                         onClick={(e) => { e.preventDefault(); onCompare(phone); }}
                     >
-                        {isInCompare ? '✓ Dipilih' : '⚖️ Bandingkan'}
+                        {isInCompare ? 'Dipilih' : 'Bandingkan'}
                     </button>
                 )}
             </div>

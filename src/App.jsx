@@ -27,7 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/search" element={<SearchPage />} />
-            <Route path="/phone/:id" element={<PhoneDetailPage />} />
+            <Route path="/phone/:slug" element={<PhoneDetailPage />} />
             <Route path="/compare" element={<ComparePage />} />
             <Route path="/about" element={<AboutPage />} />
           </Routes>

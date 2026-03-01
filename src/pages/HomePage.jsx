@@ -55,7 +55,7 @@ export default function HomePage() {
     const handleSuggestionClick = (phone) => {
         setHeroQuery('');
         setShowSuggestions(false);
-        navigate(`/phone/${phone.id}`);
+        navigate(`/phone/${phone.slug}`);
     };
 
     return (
