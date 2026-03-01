@@ -205,6 +205,61 @@
     flex: 1;
     padding: 0.9rem;
     font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.marketplace-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.marketplace-btns .btn-shopee .marketplace-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.marketplace-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* Marketplace Buttons */
+.btn-tokopedia {
+    background: #fff;
+    color: #42b549;
+    border: 2px solid #42b549;
+    transition: all var(--t-base) var(--ease-out);
+}
+
+.btn-tokopedia:hover {
+    background: #42b549;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 181, 73, 0.3);
+}
+
+.btn-shopee {
+    background: #fff;
+    color: #ee4d2d;
+    border: 2px solid #ee4d2d;
+    transition: all var(--t-base) var(--ease-out);
+}
+
+.btn-shopee:hover {
+    background: #ee4d2d;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(238, 77, 45, 0.3);
 }
 
 .detail-compare-btn {

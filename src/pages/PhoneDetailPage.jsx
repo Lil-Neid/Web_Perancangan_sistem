@@ -1,6 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import phones, { getRelatedPhones, formatPrice, getTokopediaLink, getShopeeLink } from '../data/phones';
 import PhoneCard from '../components/PhoneCard';
+import TokopediaIcon from '../assets/icons/tokopedia_icon.svg';
+import ShopeeIcon from '../assets/icons/shopee_icon.svg';
 import './PhoneDetailPage.css';
 
 export default function PhoneDetailPage() {
@@ -132,7 +134,10 @@ export default function PhoneDetailPage() {
                                     className="btn btn-tokopedia"
                                     id="buy-tokopedia"
                                 >
-                                    🟢 Beli di Tokopedia
+                                    <span className="marketplace-icon-wrap">
+                                        <img src={TokopediaIcon} alt="Tokopedia" className="marketplace-icon" />
+                                    </span>
+                                    Beli di Tokopedia
                                 </a>
                                 <a
                                     href={getShopeeLink(phone.name)}
@@ -141,7 +146,10 @@ export default function PhoneDetailPage() {
                                     className="btn btn-shopee"
                                     id="buy-shopee"
                                 >
-                                    🟠 Beli di Shopee
+                                    <span className="marketplace-icon-wrap">
+                                        <img src={ShopeeIcon} alt="Shopee" className="marketplace-icon" />
+                                    </span>
+                                    Beli di Shopee
                                 </a>
                             </div>
                         </div>
