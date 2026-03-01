@@ -5,11 +5,12 @@ export default function InteractiveButton({
     text = "Button", 
     onClick, 
     className = "",
+    variant = "default",
     ...props 
 }) {
     return (
         <button 
-            className={`interactive-btn ${className}`}
+            className={`interactive-btn ${variant} ${className}`}
             onClick={onClick}
             {...props}
         >

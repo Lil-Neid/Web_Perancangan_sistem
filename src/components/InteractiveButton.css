@@ -82,3 +82,18 @@
     opacity: 1;
     color: #fff;
 }
+
+/* White Variant */
+.interactive-btn.white {
+    background: #fff;
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+.interactive-btn.white::before {
+    background: var(--text-primary);
+}
+
+.interactive-btn.white:hover {
+    border-color: var(--text-primary);
+}

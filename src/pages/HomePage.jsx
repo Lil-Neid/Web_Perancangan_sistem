@@ -87,7 +87,6 @@ export default function HomePage() {
                         Temukan smartphone terbaik untuk kebutuhanmu
                     </h1>
                     <form className="hero-search-wrap animate-fade-in-up" onSubmit={handleHeroSearch} ref={searchRef}>
-                        <span className="hero-search-icon">🔍</span>
                         <input
                             type="text"
                             className="hero-search-input"
@@ -106,8 +105,8 @@ export default function HomePage() {
                                 ✕
                             </button>
                         )}
-                        <button type="submit" className="btn btn-primary hero-search-btn">
-                            Cari
+                        <button type="submit">
+                            <InteractiveButton text="Cari" variant="white" />
                         </button>
 
                         {showSuggestions && suggestions.length > 0 && (
