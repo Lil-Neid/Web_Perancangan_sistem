@@ -9,11 +9,10 @@ export default function AboutPage() {
                 {/* Hero */}
                 <div className="about-hero animate-fade-in-up">
                     <div className="about-hero-badge">
-                        <span>📱 Tentang ReviewHP</span>
+                        <span>Tentang ReviewHP</span>
                     </div>
                     <h1 className="about-title">
                         Platform Review Smartphone
-                        <br /><span className="about-highlight">Terlengkap di Indonesia</span>
                     </h1>
                     <p className="about-subtitle">
                         Kami membantu kamu menemukan smartphone terbaik berdasarkan kebutuhan, budget, dan preferensi.
@@ -23,17 +22,14 @@ export default function AboutPage() {
                 {/* Mission */}
                 <div className="about-grid animate-fade-in-up">
                     <div className="about-card">
-                        <span className="about-card-icon">🎯</span>
                         <h3>Misi Kami</h3>
                         <p>Memberikan informasi spesifikasi dan review HP yang akurat, objektif, dan mudah dipahami untuk membantu pengguna Indonesia membuat keputusan pembelian yang tepat.</p>
                     </div>
                     <div className="about-card">
-                        <span className="about-card-icon">🔍</span>
                         <h3>Apa yang Kami Tawarkan</h3>
                         <p>Spesifikasi lengkap, review editor, perbandingan HP, dan link langsung ke Tokopedia & Shopee untuk kemudahan berbelanja.</p>
                     </div>
                     <div className="about-card">
-                        <span className="about-card-icon">💡</span>
                         <h3>Mengapa ReviewHP?</h3>
                         <p>Kami fokus pada kebutuhan pengguna Indonesia — dengan harga dalam Rupiah, link marketplace lokal, dan review dalam Bahasa Indonesia.</p>
                     </div>
@@ -41,7 +37,7 @@ export default function AboutPage() {
 
                 {/* Methodology */}
                 <section className="about-section animate-fade-in-up">
-                    <h2 className="section-title">📐 Metodologi Review</h2>
+                    <h2 className="section-title">Metodologi Review</h2>
                     <div className="methodology-grid">
                         <div className="methodology-item">
                             <div className="methodology-number">01</div>
@@ -68,7 +64,7 @@ export default function AboutPage() {
 
                 {/* Disclaimer */}
                 <section className="about-disclaimer animate-fade-in-up">
-                    <h3>⚠️ Disclaimer</h3>
+                    <h3>Disclaimer</h3>
                     <ul>
                         <li>Harga yang ditampilkan merupakan estimasi dan dapat berbeda di setiap seller/marketplace.</li>
                         <li>Spesifikasi diambil dari sumber resmi pabrikan dan dapat berubah tanpa pemberitahuan.</li>
