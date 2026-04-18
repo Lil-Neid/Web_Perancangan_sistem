@@ -19,7 +19,7 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Web_Perancangan_sistem">
       <ScrollToTop />
       <div className="app">
         <Navbar />
@@ -36,6 +36,6 @@ function App() {
       </div>
     </Router>
   );
-}
+} 
 
 export default App;
