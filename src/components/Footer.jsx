@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className="footer-grid">
                     <div className="footer-about">
                         <div className="footer-brand">
-                            <span className="brand-text">ReviewHP</span>
+                            <Link to="/" className="brand-text">ReviewHP</Link>
                         </div>
                         <p className="footer-desc">
                             Platform review smartphone di Indonesia. Temukan HP terbaik
