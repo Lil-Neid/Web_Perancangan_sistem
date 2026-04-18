@@ -1,6 +1,6 @@
 /* ===== Hero ===== */
 .hero {
-    position: relative;
+    position: flex;
     padding: 8rem 0 5rem;
     min-height: 100vh;
     display: flex;

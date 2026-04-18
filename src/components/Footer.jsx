@@ -10,7 +10,6 @@ export default function Footer() {
                 <div className="footer-grid">
                     <div className="footer-about">
                         <div className="footer-brand">
-                            <span className="brand-icon">📱</span>
                             <span className="brand-text">ReviewHP</span>
                         </div>
                         <p className="footer-desc">

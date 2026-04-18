@@ -12,21 +12,7 @@
     margin-bottom: var(--s-3xl);
 }
 
-.footer-about .footer-brand {
-    display: flex;
-    align-items: center;
-    gap: var(--s-sm);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    margin-bottom: var(--s-md);
-    color: var(--text-primary);
-}
 
-.footer-brand .brand-text::after {
-    content: '.';
-    color: var(--accent);
-}
 
 .footer-desc {
     color: var(--text-secondary);
