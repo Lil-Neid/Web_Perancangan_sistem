@@ -34,10 +34,14 @@ The application provides a simple workflow for users to search for smartphones, 
 
 ```
 src/
+ ├── assets/         Static files (icons, images)
  ├── components/     Reusable UI components
+ ├── data/           Static or mock data used in the app
  ├── pages/          Application pages
  ├── assets/         Static assets
  ├── App.jsx         Main application component
+ ├── App.css         Global app styles
+ ├── index.css       Base style  
  └── main.jsx        Application entry point
 ```
 
