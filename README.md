@@ -1,16 +1,111 @@
-# React + Vite
+# ReviewHP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ReviewHP is a web-based application designed to help users explore, compare, and evaluate smartphones through a clean and structured interface. The project was developed as part of a university assignment, focusing on modern frontend development practices.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+The application provides a simple workflow for users to search for smartphones, view detailed specifications, and compare multiple devices. It emphasizes usability, clarity of information, and responsive design.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Search smartphones by name
+* View detailed specifications for each device
+* Compare multiple smartphones
+* Client-side routing for seamless navigation
+* Responsive layout for different screen sizes
+
+---
+
+## Tech Stack
+
+* React
+* Vite
+* React Router
+* CSS
+* GitHub Pages (deployment)
+
+---
+
+## Project Structure
+
+```
+src/
+ ├── components/     Reusable UI components
+ ├── pages/          Application pages
+ ├── assets/         Static assets
+ ├── App.jsx         Main application component
+ └── main.jsx        Application entry point
+```
+
+---
+
+## Getting Started
+
+Clone the repository:
+
+```
+git clone https://github.com/lil-neid/Web_Perancangan_sistem.git
+```
+
+Navigate into the project directory:
+
+```
+cd Web_Perancangan_sistem
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run the development server:
+
+```
+npm run dev
+```
+
+---
+
+## Build
+
+To generate a production build:
+
+```
+npm run build
+```
+
+---
+
+## Deployment
+
+This project is deployed using GitHub Pages. The production build is generated and published from the `dist` directory via the `gh-pages` branch.
+
+To deploy:
+
+```
+npm run deploy
+```
+
+---
+
+## Live Application
+
+https://lil-neid.github.io/Web_Perancangan_sistem/
+
+---
+
+## Notes
+
+* Routing is handled on the client side using React Router.
+* The project uses HashRouter to ensure compatibility with GitHub Pages.
+* The `gh-pages` branch contains only the production build output and should not be edited manually.
+
+---
+
+This project was developed as part of a university coursework in system analysis and design.
+
