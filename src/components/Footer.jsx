@@ -50,7 +50,7 @@ export default function Footer() {
                 <div className="footer-bottom">
                     <p>&copy; {new Date().getFullYear()} ReviewHP. Semua harga bersifat estimasi dan dapat berubah.</p>
                     <p className="footer-disclaimer">
-                        Harga dan spesifikasi bisa berubah sewaktu-waktu. Pastikan cek marketplace untuk info terbaru.
+                        Web ini dibuat sebagai bentuk tugas mata kuliah analisis dan perancangan sistem informasi. 
                     </p>
                 </div>
             </div>

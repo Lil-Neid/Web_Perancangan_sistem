@@ -33,7 +33,10 @@ export default function Navbar() {
     return (
         <nav className="navbar glass">
             <div className="navbar-inner container">
-                <Link to="/" className="brand-text">ReviewHP</Link>
+                <Link to="/" className="brand-text">
+                    ReviewHP
+                    <span className="built-by">By Nickholas K.</span>
+                </Link>
 
                 <div className={`navbar-links ${mobileMenuOpen ? 'open' : ''}`}>
                     {navLinks.map(link => (

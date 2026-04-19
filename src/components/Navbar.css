@@ -49,12 +49,19 @@
     color: var(--text-primary);
     position: relative;
     font-size: 1.5rem;
+    display: inline-flex;
+    align-items: baseline;
 }
 
-.brand-text::after {
-    content: '.';
-    color: var(--accent);
+
+.brand-text .built-by {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-left: 0.75rem;
+    vertical-align: baseline;
 }
+
 
 /* Search */
 .navbar-search {
